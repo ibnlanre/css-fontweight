@@ -1,0 +1,30 @@
+{
+  "name": "@ibnlanre/css-weight",
+  "version": "1.0.0",
+  "description": "translates font-styles into their respective css font-weights",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibnlanre/css-fontweight.git"
+  },
+  "keywords": [
+    "font",
+    "weight",
+    "font-weight",
+    "css-weight",
+    "opentype",
+    "usweightclass"
+  ],
+  "author": {
+    "name": "Ridwan Olanrewaju",
+    "email": "olaitanlanre28@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ibnlanre/css-weight/issues"
+  },
+  "homepage": "https://github.com/ibnlanre/css-weight#readme"
+}

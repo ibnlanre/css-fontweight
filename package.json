@@ -1,6 +1,6 @@
 {
   "name": "@ibnlanre/css-weight",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "translates font-styles into their respective css font-weights",
   "main": "index.js",
   "repository": {

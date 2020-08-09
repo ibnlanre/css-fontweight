@@ -1,6 +1,11 @@
 # CSS-Font-Weight
 
-A utility to convert font weight names to values
+A utility to convert font weight names into values
+
+```markdown
+Acceptable values include:
+    EXTRABOLD, Extra Bold, extra bold, extra-bold, extra_bold
+```
 
 ## Installation
 
@@ -10,34 +15,16 @@ A utility to convert font weight names to values
 npm install @ibnlanre/css-weight
 ```
 
-### Global
-
-```markdown
-npm install -g @ibnlanre/css-weight
-```
-
 ## API
-
-```html
-<!-- as a script -->
-<script type="module" src="/node_modules/@ibnlanre/css-weight"></script>
-```
 
 ```javascript
 // with commonjs
-const cssWeight = require("cssWeight");
 
-// with es6
-import { openType, weights } from "@ibnlanre/css-weight";
-import cssWeight from "@ibnlanre/css-weight";
+const cssWeight = require("@ibnlanre/css-weight");
+cssWeight.weights[350] // [ 'Book', 'Demi' ]
 
-console.log(openType[300]) // [ 'Light' ]
-console.log(weights[350]) // [ 'Book', 'Demi' ]
-
-/*
-  Acceptable values include:
-  EXTRABOLD, Extra Bold, extra bold, extra-bold, extra_bold
-*/
+let openType = cssWeight.openType;
+openType[300] // [ 'Light' ]
 
 cssWeight("--=HAIR9876LINE Condensed");
 // { style: 'normal', weight: 200, stretch: 'condensed' }

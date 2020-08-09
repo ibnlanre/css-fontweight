@@ -1,6 +1,6 @@
 {
   "name": "@ibnlanre/css-weight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "translates font-styles into their respective css font-weights",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ibnlanre/css-fontweight.git"
+    "url": "git+https://github.com/ibnlanre/css-weight.git"
   },
   "keywords": [
     "font",

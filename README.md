@@ -1,4 +1,4 @@
-# CSS-FONTWEIGHT
+# CSS-Font-Weight
 
 A utility to convert font weight names to values
 
@@ -28,7 +28,17 @@ npm install -g @ibnlanre/css-weight
 // with commonjs
 
 const cssWeight = require("cssWeight");
+cssWeight.openType[300] // [ 'Light' ]
+cssWeight.weights[350] // [ 'Book', 'Demi' ]
+
+/*
+  Acceptable values include:
+  Semi Bold, semi bold, semi-bold, semi_bold
+*/
+
 cssWeight("--=HAIR9876LINE") // { style: 'normal', weight: 200 }
+cssWeight("Italic Book", { MDN: true }) // { style: 'italic', weight: 'normal' }
+cssWeight("Oblique Book") // { style: 'oblique', weight: 350 }
 ```
 
 ## Default Weights
@@ -51,8 +61,8 @@ cssWeight("--=HAIR9876LINE") // { style: 'normal', weight: 200 }
 | 650 | ExtraBold |
 | 700 | UltraBold |
 | 800 | Black |
-| 900 | ExtraBlack, ExtraBold, Heavy |
-| 999 | UltraBlack, UltraBold, Fat, Poster |
+| 900 | ExtraBlack, Heavy |
+| 999 | UltraBlack, Fat, Poster |
 
 ## OpenType Weights
 
@@ -71,11 +81,6 @@ To use the font weight definition in the OpenType specification, which is the sa
 | 900 | Black, Heavy |
 | 950 | ExtraBlack, UltraBlack |
 
-```markdown
-Acceptable Values include:
-Semi Bold, semi bold, semi-bold, semi_bold
-```
-
 ## References
 
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)
@@ -85,4 +90,4 @@ Semi Bold, semi bold, semi-bold, semi_bold
 
 ## Acknowledgements
 
-`fontweight` was inspired by [`dan-gamble/postcss-font-weight-names`](https://github.com/dan-gamble/postcss-font-weight-names)
+`CSS-Font-Weight` was inspired by [`dan-gamble/postcss-font-weight-names`](https://github.com/dan-gamble/postcss-font-weight-names)

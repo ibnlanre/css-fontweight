@@ -48,8 +48,8 @@
       650: ["ExtraBold"],
       700: ["UltraBold"],
       800: ["Black"],
-      900: ["ExtraBlack", "ExtraBold", "Heavy"],
-      999: ["UltraBlack", "UltraBold", "Fat", "Poster"],
+      900: ["ExtraBlack", "Heavy"],
+      999: ["UltraBlack", "Fat", "Poster"],
     };
     const openTypeMap = {
       100: ["Thin"],
@@ -63,6 +63,16 @@
       900: ["Black", "Heavy"],
       950: ["ExtraBlack", "UltraBlack"],
     };
+    const fontStretch = [
+      "ultra-condensed",
+      "extra-condensed",
+      "semi-condensed",
+      "condensed",
+      "ultra-expanded",
+      "extra-expanded",
+      "semi-expanded",
+      "expanded",
+    ];
     const cssWeight = (item, { MDN } = { MDN: false }) => {
       if (!item) return "missing query";
       if (typeof item !== "string") return "missing query";
@@ -70,19 +80,28 @@
         .replace(/(^[,\s]+)|(\d)|[^\w,]|([,\s]+$)/g, "")
         .split(",")
         .map((item) => {
-          let style = item.toLowerCase().match(/italic|oblique/gi) || [
+          const fontMap = Object.entries(MDN ? openTypeMap : weightMap);
+          const style = (item.toLowerCase().match(/italic|oblique/gi) || [
             "normal",
-          ];
-          item = item.replace(style[0], "") || "regular";
-          const map = Object.entries(MDN ? openTypeMap : weightMap);
-          for (const [weight, name] of map) {
-            if (name.some((value) => new RegExp(value, "i").test(item)))
-              return { style: style.pop(), weight: +weight };
-          }
-          return { style: "normal", weight: "normal" };
+          ])[0];
+          const stretch =
+            ((item) => {
+              for (const name of fontStretch)
+                if (new RegExp(name.split("-").join(""), "i").test(item))
+                  return name.toLowerCase();
+            })(item) || "normal";
+          const weight = fontMap
+            .filter((pair) =>
+              pair[1].some((value) => new RegExp(value, "i").test(item))
+            )
+            .map((each) => each[0]);
+          return {
+            style,
+            weight: weight.length ? Math.max(...weight) : "normal",
+            stretch,
+          };
         });
       return transform.length == 1 ? transform.pop() : transform;
-      // return `Not in ${MDN ? "the OpenType" : "any"} specification`
     };
     exports = module.exports = cssWeight;
     exports.openType = openTypeMap;

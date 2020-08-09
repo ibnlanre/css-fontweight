@@ -75,9 +75,9 @@
     ];
     const cssWeight = (item, { MDN } = { MDN: false }) => {
       if (!item) return "missing query";
-      if (typeof item !== "string") return "missing query";
+      if (typeof item !== "string") return "query must be a string";
       let transform = item
-        .replace(/(^[,\s]+)|(\d)|[^\w,]|([,\s]+$)/g, "")
+        .replace(/[^\w,]|_|\d/g, "")
         .split(",")
         .map((item) => {
           const fontMap = Object.entries(MDN ? openTypeMap : weightMap);

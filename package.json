@@ -3,13 +3,11 @@
   "version": "1.0.1",
   "description": "translates font-styles into their respective css font-weights",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ibnlanre/css-weight.git"
   },
+  "type": "module",
   "keywords": [
     "font",
     "weight",

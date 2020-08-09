@@ -20,25 +20,35 @@ npm install -g @ibnlanre/css-weight
 
 ```html
 <!-- as a script -->
-
-<script src="/node_modules/@ibnlanre/css-weight"></script>
+<script type="module" src="/node_modules/@ibnlanre/css-weight"></script>
 ```
 
 ```javascript
 // with commonjs
-
 const cssWeight = require("cssWeight");
-cssWeight.openType[300] // [ 'Light' ]
-cssWeight.weights[350] // [ 'Book', 'Demi' ]
+
+// with es6
+import { openType, weights } from "@ibnlanre/css-weight";
+import cssWeight from "@ibnlanre/css-weight";
+
+console.log(openType[300]) // [ 'Light' ]
+console.log(weights[350]) // [ 'Book', 'Demi' ]
 
 /*
   Acceptable values include:
-  Semi Bold, semi bold, semi-bold, semi_bold
+  EXTRABOLD, Extra Bold, extra bold, extra-bold, extra_bold
 */
 
-cssWeight("--=HAIR9876LINE") // { style: 'normal', weight: 200 }
-cssWeight("Italic Book", { MDN: true }) // { style: 'italic', weight: 'normal' }
-cssWeight("Oblique Book") // { style: 'oblique', weight: 350 }
+cssWeight("--=HAIR9876LINE Condensed");
+// { style: 'normal', weight: 200, stretch: 'condensed' }
+cssWeight("Italic Book", { MDN: true });
+// { style: 'italic', weight: 'normal', stretch: 'normal' }
+cssWeight("Oblique Poster, Semi_Expanded Demi"); /* returns
+  [
+    { style: 'oblique', weight: 999, stretch: 'normal' },
+    { style: 'normal', weight: 350, stretch: 'semi-expanded' }
+  ]
+*/
 ```
 
 ## Default Weights

@@ -1,6 +1,12 @@
 # CSS-Font-Weight
 
-A utility to convert font weight names into values
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-f8bc45.svg)](https://github.com/prettier/prettier)
+![version](https://img.shields.io/badge/version-1.1.0-blue)
+[![Twitter](https://img.shields.io/twitter/follow/ibnlanre?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=ibnlanre)
+
+A utility to convert font weight names into number values
 
 ```markdown
 Acceptable values include:
@@ -17,25 +23,54 @@ npm install @ibnlanre/css-weight
 
 ## API
 
+### Script tags
+
 ```javascript
-// with commonjs
+<script src="./node_modules/@ibnlanre/weight.js" type="module"></script>
+```
 
+### ES6
+
+```javascript
+import cssWeight from "./node_modules/@ibnlanre/weight.js"
+import { openType } from cssWeight
+import { weights } from cssWeight
+```
+
+### CommonJS
+
+```javascript
 const cssWeight = require("@ibnlanre/css-weight");
-cssWeight.weights[350] // [ 'Book', 'Demi' ]
+const openType = cssWeight.openType;
+```
 
-let openType = cssWeight.openType;
-openType[300] // [ 'Light' ]
+### Reference
 
+```javascript
+openType[300] //-> [ 'Light' ]
+cssWeight.weights[350] //-> [ 'Book', 'Demi' ]
+```
+
+### Single Arguments
+
+```javascript
+cssWeight(""); //-> "missing query"
+cssWeight({ MDN: true }); //-> "query must be a string"
 cssWeight("--=HAIR9876LINE Condensed");
-// { style: 'normal', weight: 200, stretch: 'condensed' }
+//-> { style: 'normal', weight: 200, stretch: 'condensed' }
 cssWeight("Italic Book", { MDN: true });
-// { style: 'italic', weight: 'normal', stretch: 'normal' }
-cssWeight("Oblique Poster, Semi_Expanded Demi"); /* returns
-  [
-    { style: 'oblique', weight: 999, stretch: 'normal' },
-    { style: 'normal', weight: 350, stretch: 'semi-expanded' }
-  ]
-*/
+//-> { style: 'italic', weight: 'normal', stretch: 'normal' }
+```
+
+### Multiple Arguments
+
+```javascript
+cssWeight("Oblique Poster, Semi_Expanded Demi");
+// returns
+// [
+//   { style: 'oblique', weight: 999, stretch: 'normal' },
+//   { style: 'normal', weight: 350, stretch: 'semi-expanded' }
+// ]
 ```
 
 ## Default Weights

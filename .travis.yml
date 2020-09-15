@@ -2,4 +2,5 @@ language: node_js
 branches:
   only:
   - master
-script: npm run test
+sudo: false
+script: npm test

@@ -2,4 +2,4 @@ language: node_js
 branches:
   only:
   - master
-script: ./src/tests.js
+script: npm run test

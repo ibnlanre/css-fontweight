@@ -18,7 +18,7 @@ describe("Weight", () => {
   ];
 
   describe("#no_query", () => {
-    it("should ruturn missing query", () => {
+    it("should return missing query", () => {
       expect(cssWeight("")).to.be.a("string").that.equals("missing query")
     })
   })

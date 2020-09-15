@@ -2,4 +2,5 @@ language: node_js
 branches:
   only:
   - master
-sudo: false
+node_js:
+  - "node"
